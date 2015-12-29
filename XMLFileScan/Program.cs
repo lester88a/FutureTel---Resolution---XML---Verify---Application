@@ -18,26 +18,10 @@ namespace XMLFileScan
                 ////                      let pm = line.Split("=")
                 ////                      select new KeyValuePair<string,string>(pm[0],pm[1]);
 
-                ////local variable for targetDirectory
-                //string targetDirectory = "D:\\XML";
-                //string[] fileNames = Directory.GetFiles(targetDirectory, "*.xml");
-                ////string fileNameWithoutPath = Path.GetFileName(fileNames);
-                //for (int i = 0; i < fileNames.Length; i++)
-                //{
-                //    //Console.WriteLine(fileNames[i]);
-                //    if (fileNames[i].Contains("RESOLUTION"))
-                //    {
-                //        Console.WriteLine();
-                //        Console.WriteLine("Found: " + fileNames[i]);
+                //call the VerifyResolutionFile class
+                VerifyResolutionFile vfFile = new VerifyResolutionFile();
+                vfFile.VerifyResolutionFileMethod(); //call the method
 
-                //        //ReadXML rxml = new ReadXML(fileNames[i]);
-                //        //ReadXML rxmls = new ReadXML("D:\\XML\\Sample1.xml");
-
-                //    }
-                   
-                //}
-
-                ReadXMl2 rxml2 = new ReadXMl2();
             }
             catch (Exception e)
             {

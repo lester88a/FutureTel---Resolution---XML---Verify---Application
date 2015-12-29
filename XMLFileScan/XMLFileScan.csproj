@@ -45,6 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadXML.cs" />
     <Compile Include="ReadXMl2.cs" />
+    <Compile Include="VerifyNumberOfRecords.cs" />
+    <Compile Include="VerifyResolutionFile.cs" />
+    <Compile Include="VerifyResolutionList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

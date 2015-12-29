@@ -72,25 +72,6 @@ namespace XMLFileScan
 
                     //count the total of repair IDs
                     repairIDCount++;
-
-                    while (aReader.Read())
-                    {
-                        //verify the repairResolutionList
-                        if (aReader.NodeType == XmlNodeType.Element && aReader.Name == "ervmt:repairResolutionCode")
-                        {
-                            string repairResolutionCode = aReader.ReadString();
-                            if (repairResolutionCode == "")
-                            {
-                                Console.WriteLine(repairID + " has empty repairResolutionCode!!!");
-                            }
-                            else
-                            {
-                                Console.WriteLine(repairResolutionCode);
-                            }
-
-                        }
-                    }
-                    
                 } 
             }
 
@@ -107,7 +88,6 @@ namespace XMLFileScan
             }
 
 
-            //verify the repairResolutionList
             
 
         }
