@@ -11,7 +11,7 @@ namespace XMLFileScan
     class VerifyResolutionFile
     {
         //local variables
-        public static string targetDirectory = "D:\\XML"; //The Fixed XML file Directory
+        public static string targetDirectory = "D:\\XML Sample"; //The Fixed XML file Directory
         string[] fileNames = Directory.GetFiles(targetDirectory, "*.xml"); //specify the file type and store them in an array
 
 
@@ -30,19 +30,12 @@ namespace XMLFileScan
                 if (fileNames[i].Contains("RESOLUTION"))
                 {
                     //show the messages that found the specific files
-                    Console.WriteLine("Found: " + fileNames[i]);
+                    Console.WriteLine("\n\nFound: " + fileNames[i]);
                     Console.WriteLine();
 
-                    ////verify VerifyNumberOfRecords
-                    //VerifyNumberOfRecords vfRecords = new VerifyNumberOfRecords(fileNames[i]);
-                    //vfRecords.VerifyNumberOfRecordsMethod();
-
-                    if (fileNames[i+1].Contains("RESOLUTION"))
-                    {
-                        //verify VerifyNumberOfRecords
-                        VerifyNumberOfRecords vfRecordss = new VerifyNumberOfRecords(fileNames[i+1]);
-                        vfRecordss.VerifyNumberOfRecordsMethod();
-                    }
+                    //verify VerifyNumberOfRecords
+                    VerifyNumberOfRecords vfRecords = new VerifyNumberOfRecords(fileNames[i]);
+                    vfRecords.VerifyNumberOfRecordsMethod();
                    
                 }
             }

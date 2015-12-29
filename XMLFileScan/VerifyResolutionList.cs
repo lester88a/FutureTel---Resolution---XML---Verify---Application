@@ -54,27 +54,36 @@ namespace XMLFileScan
                 //    //}
 
                 //}
-                //if (reader.NodeType == XmlNodeType.Element && reader.Name == "tns:repairOrderResolution>")
-                //{
-                //    Console.WriteLine("a");
-                //    if (reader.NodeType == XmlNodeType.Element && !reader.Name.Contains("ervmt:repairResolutionList"))
-                //    {
-                //        Console.WriteLine("No");
-                //    }
-                //}
-                //if (reader.NodeType == XmlNodeType.Element && reader.Name.Contains("ervmt:repairResolutionList"))
-                //{
-                //    Console.WriteLine("++++++++++++++++");
-                //}
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "tns:repairOrderResolution")
+                {
+                    Console.WriteLine("yes");
+                    
+                }
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "ervmt:repairResolutionCode")
                 {
                     repairResolutionCode = reader.ReadString();
                     if (repairResolutionCode == "")
                     {
-                        throw new Exception("The repairResolutionCode is empty!!\n");
+                        Console.WriteLine("The repairResolutionCode is empty. Failed!!!\n");
                     }
-                    //Console.WriteLine(repairResolutionCode);
+
+
                 }
+                //if (reader.NodeType == XmlNodeType.Element && reader.Name.Contains("ervmt:repairResolutionList"))
+                //{
+                //    Console.WriteLine("++++++++++++++++");
+                //}
+
+                //if (reader.NodeType == XmlNodeType.Element && reader.Name == "ervmt:repairResolutionCode")
+                //{
+                //    repairResolutionCode = reader.ReadString();
+                //    if (repairResolutionCode == "")
+                //    {
+                //        //throw new Exception("The repairResolutionCode is empty!!\n");
+                //        Console.WriteLine("The repairResolutionCode is empty. Failed!!!\n");
+                //    }
+                    
+                //}
                 
             }
         }

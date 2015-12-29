@@ -75,7 +75,8 @@ namespace XMLFileScan
             }
             else //if not match
             {
-                throw new Exception("The number of records did not match the total of repairID\n");
+                //throw new Exception("The number of records did not match the total of repairID\n");
+                Console.WriteLine("The number of records did not match the total of repairID. Failed!!!\n");
             }
 
         }
