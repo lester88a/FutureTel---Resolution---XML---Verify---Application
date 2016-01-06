@@ -9,6 +9,12 @@ namespace XMLFileScan
 {
     class VerifyNumberOfRecords
     {
+        //call the EmailService
+        EmailService es = new EmailService();
+        //private instance variables
+        private string msgSubject = "";
+        private string msgBody = "";
+
         //declare a file name
         string fileName;
 
@@ -20,13 +26,14 @@ namespace XMLFileScan
         //declare a repairIDCount variable
         int repairIDCount = 0;
 
+        
         //constructor
         public VerifyNumberOfRecords(string fileName)
         {
             this.fileName = fileName;
             reader = XmlReader.Create(fileName);
         }
-
+        
         //method
         public void VerifyNumberOfRecordsMethod()
         {
@@ -43,6 +50,7 @@ namespace XMLFileScan
 
                     //display the number of records
                     Console.WriteLine("The number of records: " + numberOfRecords);
+                    
                 }
 
                 //find the specific tag (ervmt:repairID) of the resolution XML file
@@ -60,7 +68,9 @@ namespace XMLFileScan
 
                 }
             }
- 
+
+            reader.Close();
+            //reader.Dispose();
 
             Console.WriteLine("The total of the repairIDs: " + repairIDCount);
 
@@ -70,13 +80,35 @@ namespace XMLFileScan
                 Console.WriteLine("This number of records Passed!");
 
                VerifyResolutionList vfRlist = new VerifyResolutionList();
-               vfRlist.VerifyResolutionListMethod(fileName);
+               vfRlist.VerifyrepairResolutionList(fileName);
 
             }
             else //if not match
             {
                 //throw new Exception("The number of records did not match the total of repairID\n");
                 Console.WriteLine("The number of records did not match the total of repairID. Failed!!!\n");
+
+                msgSubject = "Errors in resolution XML file: repairID not match";
+                msgBody = "\n The number of records: " + numberOfRecords + ", The total of repairIDs: " + repairIDCount + 
+                    ".\n The number of records did not match the total of repairID. Failed!!!\n File Name: " + fileName;
+                try
+                {
+                    //send the error message to email
+                    //es.SendEmailMethod(msgSubject, msgBody);
+
+                    //this region part is for moving the error files method
+                    #region
+                    ResolutionFileLocation rf = new ResolutionFileLocation();
+                    MoveFailedFile mv = new MoveFailedFile(fileName, fileName.Remove(0,rf.outboundPath.Length));
+                    mv.Move();
+                    #endregion
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
 
         }
